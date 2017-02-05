@@ -1,74 +1,59 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package estructuras;
 import java.io.IOException;
 import java.util.*;
-/**
- * Particular implementation for the ADT ValueFrequency
- * 
- * @author eduarc
- */
-public class IntegerFrequency extends ValueFrequency<Integer> {
 
-    // Value el número de arriba, Frecuencia el contador
-        
-        
+public class IntegerFrequency extends ValueFrequency<Integer> {
+    
         int min;  
-        int max;  
-        
+        int max;          
         int[] frecuencia;
     
-    //Este método guarda el arreglo de frecuencias
     public IntegerFrequency(int min, int max) {   
         
         this.max = max;
         this.min = min;
-        this.frecuencia = new int [max- min + 1];
-        
-        /*for (int i = min; i < frecuencia.length; i++) {
-           System.out.print(i + "  ");
-        }*/
+        this.frecuencia = new int [max- min + 1];        
     }
     
-    //Este método incrementa las frecuencias de acuerdo al 
-    //valor que el usuario le asigne dentro del rango
     @Override
     public void increase(Integer value) {
-        if(min <= value && value <= max){
-            frecuencia[value - min] += 1;;
+        if(min <= value && value <= max){ // O(1) t1
+            frecuencia[value - min] += 1; //O(1) t2
         }else{
-            System.out.println("Valor fuera de rango");
+            System.out.println("Valor fuera de rango \n"); //O(1) t3
         }
     }
-    //Este método decrementa las frecuencias de acuerdo al 
-    //valor que el usuario le asigne dentro del rango
+    //La complejidad de éste método es de O(3)
+    //El tiempo de ejecución del método es T(t1 + t2 + t3)
+    
     @Override
     public void decrease(Integer value) {
         
-        if(min <= value && value <= max){
-            frecuencia[value - min] -= 1;;
+        if(min <= value && value <= max){ // O(1) t1
+            frecuencia[value - min] -= 1; // O(1) t2
         }else{
-            System.out.println("Valor fuera de rango");
+            System.out.println("Valor fuera de rango \n"); // O(1) t3
         }
     }
+    //La complejidad de éste método es de O(3)
+    //El tiempo de ejecución del método es T(t1 + t2 + t3)
+    
 
-    //Este método muestra las frecuencias
     @Override
     public int getFrequency(Integer value) {
-        // Implementation goes here
-        try{
-        if(min <= value && value <= max)
-        System.out.println(frecuencia[value- min]);
+        try{ // O(1) t1
+        if(min <= value && value <= max) // O(1) t2
+        System.out.println(frecuencia[value- min]); // O(1) t3
         
-        return frecuencia[value- min];
-        }catch(java.lang.ArrayIndexOutOfBoundsException e){
-            System.out.println("Valor fuera de rango");
+        return frecuencia[value- min]; // O(1) t4
+        }catch(java.lang.ArrayIndexOutOfBoundsException e){ // O(1) t5
+            System.out.println("Valor fuera de rango \n"); // O(1) t6
         }
-        return 0;
+        return 0; // O(1) t7
     }
+    //La complejidad de este método es de O(7)
+    //El tiempo de ejecución dle método es T(t1+ t2+ t3+ t4+ t5+ t6+ t7)
     
     
 }

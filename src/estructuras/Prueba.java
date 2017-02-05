@@ -18,10 +18,14 @@ public class Prueba {
         int min = 0, max = 0, sel = 0, val = 0;
         System.out.println("Ingrese valor entero minimo ");
         min = m.nextInt();
-        System.out.println("Ingrese valor entero maximo");
+        System.out.println("Ingrese valor entero maximo \n");
         max = n.nextInt();
+        if(min > max){
+            System.out.println("El intervalo es inválido \n");
+            ingresar();
+        }
         IntegerFrequency prueba = new IntegerFrequency(min, max); 
-        System.out.println("El rango es desde "+ min + " hasta "+ max );
+        System.out.println("El rango es desde "+ min + " hasta "+ max + "\n" );
         
         while(true){
             System.out.println("Seleccione una opcion: ");
